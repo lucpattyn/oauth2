@@ -1,0 +1,66 @@
+
+<script src="jwt.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
+
+<script>
+
+const CLIENT_ID = "quarks_app";
+const CLIENT_SECRET = "quarks_secret";
+const REDIRECT_URL = "callback";
+const SECRET_KEY = "s3c43t";
+
+const TOKEN_PATH = "/token";
+
+// Get the authorization code from the URL
+const urlParams = new URLSearchParams(window.location.search);
+const authorization_code_ = urlParams.get('code');
+console.log(authorization_code_);
+
+// Check if the authorization code is present
+if (!authorization_code_) {
+  alert("Error: No authorization code received.");
+}
+
+// Prepare the data to be sent in the POST request
+const data = {
+  grant_type: "authorization_code",
+  authorization_code: authorization_code_,
+  client_id: CLIENT_ID,
+  client_secret: CLIENT_SECRET,
+  redirect_url: REDIRECT_URL
+};
+
+// Send a POST request to the token endpoint with the data
+axios.post(TOKEN_PATH, data)
+  .then(response => {
+    if (response.status !== 200) {
+      console.error(`The authorization server returned an error: ${response.data}`);
+      alert(`Error: The authorization server returned an error: ${response.data}`);
+      return;
+    }
+    // Parse the response data
+    const access_token = response.data.access_token;
+    try {
+    	if(access_token){
+    		console.log('access token: ' + access_token);
+        	// Store the access token in a cookie
+        	Cookies.set("access_token", access_token);
+        	// Redirect the user to the main page
+        	window.location.href = "main.html";
+		}
+		else{
+			alert('access denied');
+		}
+    	
+    } catch (err) {
+        console.error(err);
+        alert(`Error: Invalid token ${err}`);
+    }
+  })
+  .catch(error => {
+    console.error(error);
+    alert(`Error: ${error}`);
+  });
+
+</script>

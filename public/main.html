@@ -1,0 +1,32 @@
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
+</head>
+<body>
+	Successfully logged in !!
+	
+	<span id="tokenstatus">
+	</span>
+</body>
+<script>
+// Send a POST request to the token endpoint with the data
+const token  =Cookies.get("access_token");
+console.log(token);
+
+axios.get("verifytoken?accesstoken="+ token)
+	.then(response => {
+	    if (response.status !== 200) {
+		      console.error(`The authorization server returned an error: ${response.data}`);
+	    }else{
+	    	console.log(response.data);
+	    	document.getElementById("tokenstatus").innerHTML = "Token " + response.data;
+		}
+	})
+	.catch(error => {
+	    console.error(error.response);
+	    alert(`Error: ${error}`);
+	  });
+
+</script>
+</html>
