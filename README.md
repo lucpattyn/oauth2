@@ -61,8 +61,9 @@ Md. Aman Ullah (https://github.com/MdAman02) for explaining the whole process of
 
 ## History
 
- Initial Commit - 30th Jan, 2023
- Readme file updated - 31st Jan, 2023
+1. Initial Commit - 30th Jan, 2023
+2. Readme file updated - 31st Jan, 2023
+
  
  
 
