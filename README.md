@@ -13,7 +13,6 @@ Build with the following command:
 
 ```
  g++ -I ./include  main.cpp -lssl -lcrypto -pthread -o oauth2
-
 ```
 Then simply run with ./oauth2
 
@@ -28,15 +27,14 @@ and get it working on ubuntu (20.04):
 ```
 -$ sudo apt-get update -y
 -$ sudo apt-get install build-essential
-
 ```
 Although the official documentation says checkinstall and zlib1g-dev also should be present 
 
 ## Necessary Includes
 
 The main include file is basically oauth2.hpp which was generated mostly using ChatGPT prompt.
-Need Httplib - a header only C++ lib to run the webserver 
-Json parsing, Json Web Token Libraries are also required which is placed in the include directory.
+Need Httplib - a header only C++ lib to run the webserver.
+Json parsing, Json Web Token libraries are also required which is placed in the include directory.
 
 ## Sample Usage
 
@@ -64,8 +62,8 @@ Md. Aman Ullah (https://github.com/MdAman02) for explaining the whole process of
 
 ## History
 
-Initial Commit - 30th Jan, 2023
-Readme file updated - 31st Jan, 2023
+### Initial Commit - 30th Jan, 2023
+### Readme file updated - 31st Jan, 2023
 
 
 
