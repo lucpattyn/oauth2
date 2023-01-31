@@ -1,7 +1,7 @@
 # oauth2
-An oauth2 web-service built with C++ using ChatGPT
+Generic library to build C++-based OAuth 2.x servers
 
-This serivce was built based on the contents provided in this link 
+This serivce was built based on the python codes provided in this link 
 https://medium.com/@ratrosy/building-a-basic-authorization-server-using-authorization-code-flow-c06866859fb1
 
 ChatGPT was used to convert the python codes into C++, which nearly did 80% of the work.
@@ -18,10 +18,10 @@ Then simply run with ./oauth2
 
 Needless to say cmake and g++ should be pre-installed to compile.
 
-The solution was built with g++ 9.3.0 and uses very few sets of libraries like 
+The solution was built with g++ 9.3.0 and uses very few set of libraries like 
 lib openssl, lib crypto and the usual thread library 
 
-Following installation instructions should be enought to get those libraries installed
+Following installation instructions should be enough to get those libraries installed
 and get it working on ubuntu (20.04):
 
 ```
@@ -32,16 +32,15 @@ Although the official documentation says checkinstall and zlib1g-dev also should
 
 ## Necessary Includes
 
-The main include file is basically oauth2.hpp which was generated mostly using ChatGPT prompt.
-Need Httplib - a header only C++ lib to run the webserver.
-Json parsing, Json Web Token libraries are also required which is placed in the include directory.
+The main include file is basically 'oauth2.hpp' which was mostly generated using ChatGPT prompt.
+Need Httplib - a header only C++ lib (httplib.h) to run the webserver.
+Additionally Json parsing and Json Web Token libraries are required which are placed in the include directory.
 
 ## Sample Usage
 
-main.cpp shows how to include and call the apis in the the header.
+main.cpp shows how to include and call the apis of the header (oauth2.hpp).
 
-You initially generate a key for hasing algorithm and set the private and public key based on which
-the final access-token would be generated. 
+You initially generate a key for hasing algorithm for access token and set the private and public keys to that.
 Since we are using HS256 algorithm so both private and public key is the same.
 
 Then set the required variables OAuth2::client_verifier, OAuth2::client_authenticator
@@ -62,8 +61,10 @@ Md. Aman Ullah (https://github.com/MdAman02) for explaining the whole process of
 
 ## History
 
-### Initial Commit - 30th Jan, 2023
-### Readme file updated - 31st Jan, 2023
+ Initial Commit - 30th Jan, 2023
+ Readme file updated - 31st Jan, 2023
+ 
+ 
 
 
 
